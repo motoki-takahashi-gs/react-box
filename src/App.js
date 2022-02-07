@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
+import Box from './components/Box';
+import boxes from './data/boxes';
 import './App.css';
 
 function App() {
+  const [squares, setSquares] = React.useState(boxes)
+
+  const squareElements = squares.map(square => (
+    <Box key={square.id} on={square.on} />
+  ))
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {squareElements}
     </div>
   );
 }
